@@ -284,8 +284,17 @@ footer {
 /* BOOKS PAGE */
 /* */
 
-#books__body {
+#books__main {
   background-color: rgb(68, 66, 66);
+}
+
+.books__header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.books__header--title {
+  margin-bottom: 0;
 }

@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="./style.css">
   <script src="index.js"></script>
   <script src="books.js"></script>
+  <script src="https://kit.fontawesome.com/8c2874cba0.js" crossorigin="anonymous"></script>
 </head>
 <body id="books__body">
-  <section>
+  <section id="landing">
     <nav>
       <div class="nav__container">
         <div class="nav__logo--wrapper">
@@ -17,12 +18,36 @@
           <h4>SK Library</h4>
         </div>
         <ul class="nav__links">
-          <li><a href="index.html" class="nav__link">Home</a></li>
-          <li><a class="nav__link no-cursor">Contact</a></li>
-          <li><a href=""></a></li>
+          <a href="index.html" class="nav__link">Home</a>
+          <a class="nav__link no-cursor">Contact</a>
+          <a href=""></a>
         </ul>
       </div>
     </nav>
   </section>
+  <main id="books__main">
+    <section>
+      <div class="conatiner">
+        <div class="row">
+          <div class="books__header">
+            <h2 class="section__title books__header--title">
+              All <span class="red">Books</span>
+            </h2>
+            <select id="filter" onchange="filterBooks(event)">
+              <option value="disabled selected">Sort</option>
+              <option value="A_TO_Z">Alphabetical</option>
+              <option value="NEWEST_TO_OLDEST">Newest to oldest</option>
+              <option value="LOW_TO_HIGH">Price, low to high</option>
+              <option value="HIGH_TO_LOW">Price, High to Low</option>
+            </select>
+          </div>
+          <div class="books books__loading">
+            <i class="fas fa-spinner books__loading--spinner"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
 </body>
 </html>
