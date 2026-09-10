@@ -1,8 +1,28 @@
 // https://stephen-king-api.onrender.com/api/books //
 
 async function main() {
-  const users = await fetch(https://stephen-king-api.onrender.com/api/books);
-  const usersData = await users.json();
-  const userList = document.querySelector
-  console.log(userList)
+  const books = await fetch("https://stephen-king-api.onrender.com/api/books");
+  const booksData = (await books.json()).data;
+  console.log(
+    booksData.map((book) => `<div class="book">
+              <figure class="book__img--wrapper">
+                <img src="./assets/carrie-img.jpg">
+              </figure>
+              <div class="book__title">
+                Carrie
+              </div>
+              <div class="book__ratings">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <div class="book__price">
+                <span class="book__price">$19.95</span>
+              </div>
+            </div>`)
+          );
 }
+
+main();
