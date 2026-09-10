@@ -24,5 +24,5 @@ async function main() {
             </div>`)
           );
 }
-
+            // !! NEED TO TRANFER DATA INTO ARRAY B4 DOING ANYTHING ELSE !! //
 main();
