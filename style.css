@@ -284,3 +284,8 @@ footer {
 /* BOOKS PAGE */
 /* */
 
+#books__body {
+  background-color: rgb(68, 66, 66);
+  display: flex;
+  flex-direction: column;
+}
