@@ -311,9 +311,9 @@ header {
   margin-bottom: 8px;
 }
 
-.book__ratings {
+.book__year {
   margin-bottom: 8px;
-  color: #fabf2a;
+  color: red;
 }
 
 #explore {
