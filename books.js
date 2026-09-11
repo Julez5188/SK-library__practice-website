@@ -3,8 +3,11 @@
 async function main() {
   const books = await fetch("https://stephen-king-api.onrender.com/api/books");
   const booksData = (await books.json()).data;
-  console.log(
-    booksData.map((book) => `<div class="book">
+  const bookListEl = document.querySelector(".data-list");
+
+  bookListEl.innerHTML = booksData
+  .map(
+      (book) => `<div class="book">
               <figure class="book__img--wrapper">
                 <img src="./assets/carrie-img.jpg">
               </figure>
@@ -21,8 +24,9 @@ async function main() {
               <div class="book__price">
                 <span class="book__price">$19.95</span>
               </div>
-            </div>`)
-          );
+            </div>`
+          )
+          .join("");
 }
-            // !! NEED TO TRANFER DATA INTO ARRAY B4 DOING ANYTHING ELSE !! //
+          
 main();
