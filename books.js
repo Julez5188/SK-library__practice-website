@@ -1,6 +1,9 @@
 // https://stephen-king-api.onrender.com/api/books //
-const bookImages = {
-  "Carrie": "./assets"
+const bookExtras = {
+  "Carrie": {
+    image: "./assets/carrie-img.jpg", 
+    price: "$19.95",
+  }
 }
 
 async function main() {
@@ -11,9 +14,14 @@ async function main() {
 
   bookListEl.innerHTML = booksData
   .map(
-      (book) => `<div class="book">
+      (book) => {
+        const extras = bookExtras[book.Title] || {
+          image: "./assets/default.jpg",
+          price: "N/A",
+        }
+      return `<div class="book">
               <figure class="book__img--wrapper">
-                <img src="$">
+                ${extras.image}
               </figure>
               <div class="book__title">
                 ${book.Title}
@@ -22,9 +30,9 @@ async function main() {
                 ${book.Year}
               </div>
               <div class="book__price">
-                <span class="book__price">${book.Price}</span>
+                <span class="book__price">${bookExtras.price}</span>
               </div>
-            </div>`
+            </div>`}
           )
           .join("");
 }
