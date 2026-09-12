@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./style.css">
   <script src="https://kit.fontawesome.com/8c2874cba0.js" crossorigin="anonymous"></script>
 </head>
+
 <body id="books__body">
   <section>
     <nav>
@@ -20,9 +21,29 @@
           <a class="nav__link no-cursor">Contact</a>
           <a href=""></a>
         </ul>
+        <button class="btn__menu" onclick="openMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="menu__backdrop" style="visibility:hidden;">
+          <button class="btn__menu btn__menu--close" onclick="closeMenu()">
+            <i class="fas fa-times"></i>
+          </button>
+          <ul class="menu__links">
+            <li class="menu__list">
+              <a href="#" class="menu__link" onclick="closeMenu()">Home</a>
+            </li>
+            <li class="menu__list">
+              <a href="index.html#features" class="menu__link" onclick="closeMenu()">Popular Books</a>
+            </li>
+            <li class="menu__list">
+              <a class="menu__link no-cursor">Contact</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   </section>
+
   <main id="books__main">
     <section>
       <div class="conatiner">
