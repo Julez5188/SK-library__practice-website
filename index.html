@@ -6,6 +6,7 @@
   <title>SK Bookstore</title>
   <link rel="stylesheet" href="./style.css">
   <script src="https://kit.fontawesome.com/8c2874cba0.js" crossorigin="anonymous"></script>
+  <script src="books.js"></script>
   <script src="index.js"></script>
 </head>
 <body>
@@ -33,7 +34,8 @@
               <a href="#" class="menu__link" onclick="closeMenu()">Home</a>
             </li>
             <li class="menu__list">
-              <a href="books.html" class="menu__link" onclick="closeMenu()">Books</a>
+              <a href="#featured"
+               class="menu__link" onclick="closeMenu()">Books</a>
             </li>
             <li class="menu__list">
               <a class="menu__link no-cursor">Contact</a>
@@ -62,9 +64,19 @@
     <section id="highlights">
       <div class="container">
         <div class="row">
+           <div class="books books__loading">
+            <i class="fas fa-spinner books__loading--spinner"></i>
+          </div>
           <h2 class="section__title">
               Why choose <span class="red">SK Bookstore</span>
           </h2>
+           <select id="filter" onchange="filterBooks(event)">
+              <option value="disabled selected">Sort</option>
+              <option value="A_TO_Z">Alphabetical</option>
+              <option value="NEWEST_TO_OLDEST">Newest to oldest</option>
+              <option value="LOW_TO_HIGH">Price, low to high</option>
+              <option value="HIGH_TO_LOW">Price, High to Low</option>
+            </select>
           <div class="highlight__wrapper">
             <div class="highlight">
               <div class="highlight__img">

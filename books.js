@@ -160,19 +160,51 @@ async function renderBooks(filter) {
 
   booksWrapper.classList.remove('books__loading');
 
-
-}
-
-if (filter === 'A_TO_Z') {
+  if (filter === "A_TO_Z") {
   console.log(filter)
-  books.sort((a, b) => a.price - b.price);
+  books.sort((a, b) => a.Title.localeCompare(b.Title));
 }
-else if (filter === 'NEWEST_TO_OLDEST') {
+else if (filter === "NEWEST_TO_OLDEST") {
   console.log(filter)
-  books.sort((a, b) => b.price - a.price);
+  books.sort((a, b) => b.year - a.year);
 }
-else if (filter === 'RATING') {
-  books.sort((a, b) => b.rating - a.rating);
+else if (filter === "LOW_TO_HIGH") {
+  books.sort((a, b) => getPrice(a) - getPrice(b));
+}
+else if (filter === "HIGH_TO_LOW") {
+  books.sort((a, b) => getPrice(b) - getPrice(a));
+}
+
+const booksHTML = books.map((book) => {
+  return `<div class="book">
+      <figure class="book__img--wrapper">
+        <img src="${book.url}" alt="" class="book__title">
+      </figure>
+      <div class="book__title">
+        ${book.title}
+      </div>
+      <div class="book__ratings">
+        ${ratingsHTML(book.rating)}
+      </div>
+      <div class="book__price">
+       ${priceHTML(book.originalPrice, book.salePrice)}
+      </div>
+    </div>`;
+})
+.join("");
+
+booksWrapper.innerHTML = booksHTML;
+}
+
+function ratingsHTML(rating) {
+  let ratingsHTML = "";
+  for (let i =0; i < Math.floor(rating); ++i){
+    ratingHTML += `<i class="fas fa-star"></i>\n`;
+  }
+  if (!Number.isInteger(rating)) {
+    ratingHTML += `<i class="fas fa-star-half-alt"></i>\n`;
+  } 
+  return rating;
 }
 
 function filterBooks(event) {
