@@ -152,5 +152,29 @@ let books;
 async function renderBooks(filter) {
   const booksWrapper = document.querySelector(".books");
   
-  booksWrapper
+  booksWrapper.classList += ' books__loading';
+
+  if (!books) {
+    books = await getBooks();
+  }
+
+  booksWrapper.classList.remove('books__loading');
+
+
+}
+
+if (filter === 'A_TO_Z') {
+  console.log(filter)
+  books.sort((a, b) => a.price - b.price);
+}
+else if (filter === 'NEWEST_TO_OLDEST') {
+  console.log(filter)
+  books.sort((a, b) => b.price - a.price);
+}
+else if (filter === 'RATING') {
+  books.sort((a, b) => b.rating - a.rating);
+}
+
+function filterBooks(event) {
+  renderBooks(event.target.value);
 }
