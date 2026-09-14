@@ -119,7 +119,6 @@ async function getBooks() {
   const response = (await books.json()).data;
   const bookListEl = document.querySelector(".books");
   
-
   bookListEl.innerHTML = response
   .map(
       (book) => {
@@ -146,8 +145,6 @@ async function getBooks() {
 }
           
 getBooks();
-
-let books;
 
 async function renderBooks(filter) {
   const booksWrapper = document.querySelector(".books");
@@ -209,4 +206,12 @@ function ratingsHTML(rating) {
 
 function filterBooks(event) {
   renderBooks(event.target.value);
+}
+
+function getPrice(book) {
+  const price = bookExtras[book.Title]?.price;
+
+  if (!price || price === "N/A") {
+    return 0;
+  }
 }
