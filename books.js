@@ -115,17 +115,17 @@ const bookExtras = {
 }
 
 async function getBooks() {
-  const books = await fetch("https://stephen-king-api.onrender.com/api/books");
-  const response = (await books.json()).data;
-  const bookListEl = document.querySelector(".books");
-  
-  bookListEl.innerHTML = response
-  .map(
-      (book) => {
-        const extras = bookExtras[book.Title] || {
-          image: "./assets/default.jpg",
-          price: "N/A"
-        }
+  const response= await fetch("https://stephen-king-api.onrender.com/api/books");
+  const data = (await response.json()).data;
+  return data;
+}
+
+  const booksHTML = books.map((book) => {
+     const extras = bookExtras[book.Title] || {
+       image: "./assets/default.jpg",
+        price: "N/A"
+       };
+
       return `<div class="book">
               <figure class="book__img--wrapper">
                 <img src="${extras.image}" alt="">
@@ -142,9 +142,10 @@ async function getBooks() {
             </div>`}
           )
           .join("");
-}
-          
-getBooks();
+
+          booksWrapper.innerHTML = booksHTML;
+      
+let books;
 
 async function renderBooks(filter) {
   const booksWrapper = document.querySelector(".books");
