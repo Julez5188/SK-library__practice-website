@@ -172,6 +172,7 @@ const booksHTML = books.map((book) => {
           .join("");
 
           booksWrapper.innerHTML = booksHTML;
+        }
 
 function ratingsHTML(rating) {
   let ratingsHTML = "";
