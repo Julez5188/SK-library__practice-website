@@ -114,7 +114,7 @@ const bookExtras = {
   }
 }
 
-async function main() {
+async function getBooks() {
   const books = await fetch("https://stephen-king-api.onrender.com/api/books");
   const response = (await books.json()).data;
   const bookListEl = document.querySelector(".books");
@@ -145,7 +145,7 @@ async function main() {
           .join("");
 }
           
-main();
+getBooks();
 
 let books;
 
