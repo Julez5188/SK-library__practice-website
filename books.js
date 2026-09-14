@@ -166,7 +166,7 @@ async function renderBooks(filter) {
 }
 else if (filter === "NEWEST_TO_OLDEST") {
   console.log(filter)
-  books.sort((a, b) => b.year - a.year);
+  books.sort((a, b) => b.Year - a.Year);
 }
 else if (filter === "LOW_TO_HIGH") {
   books.sort((a, b) => getPrice(a) - getPrice(b));
