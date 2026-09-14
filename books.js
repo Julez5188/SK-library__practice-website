@@ -1,4 +1,7 @@
 // https://stephen-king-api.onrender.com/api/books //
+
+// BOOK DATA //
+
 const bookExtras = {
   "Carrie": {
     image: "./assets/carrie-img.jpg",
@@ -114,6 +117,8 @@ const bookExtras = {
   }
 }
 
+// RETRIEVE DATA FROM API/ WEBSITE FUNCTIONALITY //
+
 async function getBooks() {
   const response= await fetch("https://stephen-king-api.onrender.com/api/books");
   const data = (await response.json()).data;
@@ -174,6 +179,8 @@ const booksHTML = books.map((book) => {
           booksWrapper.innerHTML = booksHTML;
         }
 
+        // RATINGS FUNCTION //
+
 function ratingsHTML(rating) {
   let ratingsHTML = "";
   for (let i =0; i < Math.floor(rating); ++i){
@@ -195,6 +202,52 @@ function getPrice(book) {
   if (!price || price === "N/A") {
     return 0;
   }
+  return parseFloat(price.replace("$", ""));
 }
 
 renderBooks();
+
+//  SEARCH FUNCTION //
+
+function handleSearch(event) {
+  const query = event.target.value.trim().toLowerCase();
+
+  if (!query) {
+    closeModal();
+    return;
+  }
+
+  const match = books.find(book => 
+    book.Title.toLowerCase().includes(query)
+  );
+
+  if (match) {
+    showModal(match);
+  }else {
+    closeModal();
+  }
+}
+
+// SHOW MODAL //
+
+function showModal(book) {
+  const modal = document.getElementById("searchModal");
+  const extras = bookExtras[book.Title] || {
+    image: "./assets/default.jpg",
+    price: "N/A"
+  };
+
+  document.getElementById("modalIMG").src= extras.image;
+  document.getElementById("modalTitle").textContent = book.Title;
+  document.getElementById("modalYear").textContent = `Published: ${book.Year}`;
+  document.getElementById("modalPrice").textContent = `Price: $${extras.price}`;
+
+  modal.classList.remove("hidden");
+}
+
+// CLOSE MODAL //
+
+function closeModal() {
+  const modal = document.getElementById("searchModal");
+  modal.classList.add(" hidden");
+}
