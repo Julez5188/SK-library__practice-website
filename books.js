@@ -240,9 +240,9 @@ function showModal(book) {
   document.getElementById("modalImg").src= extras.image;
   document.getElementById("modalTitle").textContent = book.Title;
   document.getElementById("modalYear").textContent = `Published: ${book.Year}`;
-  document.getElementById("modalPrice").textContent = `Price: $${extras.price}`;
+  document.getElementById("modalPrice").textContent = `Price: ${extras.price}`;
 
-  modal.classList.remove("hidden__modal");
+  modal.classList.remove("modal__hidden");
 }
 
 // CLOSE MODAL //
