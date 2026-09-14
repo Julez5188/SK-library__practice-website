@@ -119,31 +119,6 @@ async function getBooks() {
   const data = (await response.json()).data;
   return data;
 }
-
-  const booksHTML = books.map((book) => {
-     const extras = bookExtras[book.Title] || {
-       image: "./assets/default.jpg",
-        price: "N/A"
-       };
-
-      return `<div class="book">
-              <figure class="book__img--wrapper">
-                <img src="${extras.image}" alt="">
-              </figure>
-              <div class="book__title">
-                ${book.Title}
-              </div>
-              <div class="book__year">
-                ${book.Year}
-              </div>
-              <div class="book__price">
-                <span class="book__price">${extras.price}</span>
-              </div>
-            </div>`}
-          )
-          .join("");
-
-          booksWrapper.innerHTML = booksHTML;
       
 let books;
 
@@ -174,25 +149,29 @@ else if (filter === "HIGH_TO_LOW") {
 }
 
 const booksHTML = books.map((book) => {
-  return `<div class="book">
-      <figure class="book__img--wrapper">
-        <img src="${book.url}" alt="" class="book__title">
-      </figure>
-      <div class="book__title">
-        ${book.title}
-      </div>
-      <div class="book__ratings">
-        ${ratingsHTML(book.rating)}
-      </div>
-      <div class="book__price">
-       ${priceHTML(book.originalPrice, book.salePrice)}
-      </div>
-    </div>`;
-})
-.join("");
+     const extras = bookExtras[book.Title] || {
+       image: "./assets/default.jpg",
+        price: "N/A"
+       };
 
-booksWrapper.innerHTML = booksHTML;
-}
+      return `<div class="book">
+              <figure class="book__img--wrapper">
+                <img src="${extras.image}" alt="">
+              </figure>
+              <div class="book__title">
+                ${book.Title}
+              </div>
+              <div class="book__year">
+                ${book.Year}
+              </div>
+              <div class="book__price">
+                <span class="book__price">${extras.price}</span>
+              </div>
+            </div>`}
+          )
+          .join("");
+
+          booksWrapper.innerHTML = booksHTML;
 
 function ratingsHTML(rating) {
   let ratingsHTML = "";
@@ -216,3 +195,5 @@ function getPrice(book) {
     return 0;
   }
 }
+
+renderBooks();
