@@ -237,7 +237,7 @@ function showModal(book) {
     price: "N/A"
   };
 
-  document.getElementById("modalIMG").src= extras.image;
+  document.getElementById("modalImg").src= extras.image;
   document.getElementById("modalTitle").textContent = book.Title;
   document.getElementById("modalYear").textContent = `Published: ${book.Year}`;
   document.getElementById("modalPrice").textContent = `Price: $${extras.price}`;
@@ -249,5 +249,5 @@ function showModal(book) {
 
 function closeModal() {
   const modal = document.getElementById("searchModal");
-  modal.classList.add(" hidden");
+  modal.classList.add(" modal__hidden");
 }

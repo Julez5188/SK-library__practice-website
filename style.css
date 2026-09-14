@@ -450,11 +450,11 @@ select {
 }
 
 @keyframes modalFadeIn {
-  from { transform: scale(o.9); opacity: 0; }
+  from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 
-modal__close {
+.modal__close {
   position: absolute;
   top: 10px;
   right: 12px;
