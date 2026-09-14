@@ -242,12 +242,12 @@ function showModal(book) {
   document.getElementById("modalYear").textContent = `Published: ${book.Year}`;
   document.getElementById("modalPrice").textContent = `Price: $${extras.price}`;
 
-  modal.classList.remove("hidden");
+  modal.classList.remove("hidden__modal");
 }
 
 // CLOSE MODAL //
 
 function closeModal() {
   const modal = document.getElementById("searchModal");
-  modal.classList.add(" modal__hidden");
+  modal.classList.add("modal__hidden");
 }
